@@ -5,7 +5,15 @@ function HomePage() {
     return (
         <div>
             <NavBar />
-            <Feed />
+            <div className="container flex flex-col md:flex-row">
+                <div className="w-10/12">
+                    <Feed />
+                </div>
+                <div>
+                    Tags will be here
+                </div>
+            </div>
+            
         </div>
     )
 }
