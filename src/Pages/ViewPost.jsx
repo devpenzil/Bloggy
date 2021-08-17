@@ -1,9 +1,10 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import {articles} from '../Store/Api'
+import {articles, comment} from '../Store/Api'
 import NavBar from '../Components/NavBar'
 function ViewPost() {
     const [postdata, setPostdata] = useState()
+    const [comments, setComments] = useState([])
     const fetchingPost = () => {
         axios.get(`${articles}${localStorage.getItem("postid")}`).then((Response)=>{
             setPostdata(Response.data)
@@ -12,12 +13,18 @@ function ViewPost() {
             console.log(Error)
         })
     }
+    const fetchingcomment = () => {
+        axios.get(`${comment}${localStorage.getItem("postid")}`).then((Response)=>{
+            setComments(Response.data)
+        }).then((Error)=>{
+            console.log(Error)
+        })
+    }
     useEffect(() => {
         fetchingPost()
+        fetchingcomment()
     }, [])
-    useEffect(() => {
-        {postdata ? document.querySelector('#content').innerHTML = postdata.body_html : "not loading"}
-    }, [postdata])
+  
     return (
         <div>
             <NavBar />
@@ -29,10 +36,16 @@ function ViewPost() {
                                 <div className="text-4xl font-bold">
                                     {postdata.title}
                                 </div>
-                                
-                                <div id="content" className="py-4">
-                                    
+                                <div className="space-x-6 text-purple-600 text-xl font-medium my-4">
+                                    <span>
+                                    <i class="ri-heart-line"></i> {postdata.public_reactions_count }
+                                    </span>
+                                    <span>
+                                    <i class="ri-chat-3-line"></i> {postdata.comments_count}
+                                    </span>
                                 </div>
+                                <div dangerouslySetInnerHTML={{__html: postdata.body_html}} />
+                                
                          </div>
                                
                     </div>
@@ -50,6 +63,26 @@ function ViewPost() {
                 </div>
             
             : "loading"}
+
+            <div className="container mx-auto my-6">
+                <h3 className="text-3xl font-medium"> Comments</h3>
+
+                {comments ?
+                    comments.map((com)=>{
+                        return(
+                            <div>
+                                <div className="m-4 p-4 space-y-4 border-b-2 border-gray-300">
+                                <img src={com.user.profile_image_90} alt="" className="w-12 rounded-full border-4 border-purple-300" />
+                                <span className="text-xl font-medium">{com.user.username}</span>
+                                <div dangerouslySetInnerHTML={{__html: com.body_html}} />  
+                                </div>
+                            </div>
+                        )
+                    })
+                
+                : "loading.."}
+
+            </div>
             
         </div>
     )
