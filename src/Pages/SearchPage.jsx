@@ -15,9 +15,9 @@ function SearchPage() {
             console.log(Error)
         })
     }
-    const gotopost = (id) => {
+    const gotopost = (id,slug) => {
         localStorage.setItem("postid", id)
-        history.push('/post')
+        history.push(`/post?slug=${slug}`)
     }
     useEffect(() => {
         fetchingblogs()
@@ -32,7 +32,7 @@ function SearchPage() {
                 {blogs ?
                     blogs.map((obj)=>{
                         return(
-                        <div onClick={()=> gotopost(obj.id)} className="w-full md:w-full mt-6">
+                        <div onClick={()=> gotopost(obj.id, obj.slug)} className="w-full md:w-full mt-6">
                     
                     <div className="card h-full overflow-hidden hover:shadow-lg m-4 p-4 border-2 border-purple-400 rounded hover:shadow-lg cursor-pointer transform hover:-translate-y-2 duration-500">
                         <div className="flex flex-row content-center my-2">

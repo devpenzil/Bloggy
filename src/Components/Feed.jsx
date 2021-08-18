@@ -20,8 +20,8 @@ function Feed() {
         blogsfetch()
         window.scrollTo(0,0)
     }
-    const viewpost = (id) => {
-        history.push('/post')
+    const viewpost = (id,slug) => {
+        history.push(`/post?slug=${slug}`)
         localStorage.setItem("postid", id)
     }
     useEffect(() => {
@@ -37,7 +37,7 @@ function Feed() {
                     return(
                     <div className="w-full md:w-full mt-6">
                     
-                        <div onClick={()=>viewpost(blogs.id)} className="card h-full overflow-hidden hover:shadow-lg m-4 p-4 border-2 border-purple-400 rounded hover:shadow-lg cursor-pointer transform hover:-translate-y-2 duration-500">
+                        <div onClick={()=>viewpost(blogs.id, blogs.slug)} className="card h-full overflow-hidden hover:shadow-lg m-4 p-4 border-2 border-purple-400 rounded hover:shadow-lg cursor-pointer transform hover:-translate-y-2 duration-500">
                             <div className="flex flex-row content-center my-2">
                                 <img src={blogs.user.profile_image_90} alt="profile_picture" className="w-12 rounded-full border-4 border-purple-300" />
                                 <div className="m-2 text-xl font-meddium">{blogs.user.username}</div>

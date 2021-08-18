@@ -17,7 +17,7 @@ function Tags() {
     }
     const tagnamepass = (name) => {
         localStorage.setItem("tagname",name)
-        history.push('/result')
+        history.push(`/result?tag=${name}`)
     }
     return (
         <div className="w-full">
