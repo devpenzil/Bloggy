@@ -1,7 +1,9 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import {useHistory} from 'react-router-dom'
 import {tag} from '../Store/Api'
 function Tags() {
+    const history = useHistory()
     const [tags, setTags] = useState([])
     useEffect(() => {
         fetchingtags()
@@ -12,6 +14,10 @@ function Tags() {
         }).catch((Error)=>{
             console.log(Error)
         })
+    }
+    const tagnamepass = (name) => {
+        localStorage.setItem("tagname",name)
+        history.push('/result')
     }
     return (
         <div className="w-full">
@@ -24,7 +30,7 @@ function Tags() {
                             backgroundColor: obj.bg_color_hex,
                         }
                         return(
-                            <div className="w-full m-4 shadow-md p-4 rounded text-base cursor-pointer hover:shadow-lg" style={styles}>
+                            <div onClick={()=>tagnamepass(obj.name)} className="w-full m-4 shadow-md p-4 rounded text-base cursor-pointer hover:shadow-lg" style={styles}>
                                 {obj.name}
                             </div>
                         )

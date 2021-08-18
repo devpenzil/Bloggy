@@ -1,10 +1,12 @@
 import React from 'react'
+import {useHistory} from 'react-router-dom'
 
 function NavBar() {
+    const history = useHistory()
     return (
         <div className="bg-purple-600 py-2 w-full">
             <div className="container px-2 py-2 flex flex-col md:flex-row justify-between content-center mx-auto">
-                <div className="text-white font-bold text-4xl">
+                <div onClick={()=>history.push('/')} className="text-white font-bold text-4xl cursor-pointer">
                     Bloggy
                 </div>
                 <div>
