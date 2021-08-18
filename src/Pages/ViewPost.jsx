@@ -33,10 +33,10 @@ function ViewPost() {
                     <div className="container mx-auto mt-4">
                         <img src={postdata.social_image} alt="" className=" w-full md:w-1/2 mx-auto "/>
                             <div className="pt-8">
-                                <div className="text-4xl font-bold">
+                                <div className="text-4xl font-bold w-full md:w-1/2 mx-auto">
                                     {postdata.title}
                                 </div>
-                                <div className="space-x-6 text-purple-600 text-xl font-medium my-4">
+                                <div className="w-full md:w-1/2 mx-auto space-x-6 text-purple-600 text-xl font-medium my-4">
                                     <span>
                                     <i class="ri-heart-line"></i> {postdata.public_reactions_count }
                                     </span>
@@ -44,12 +44,12 @@ function ViewPost() {
                                     <i class="ri-chat-3-line"></i> {postdata.comments_count}
                                     </span>
                                 </div>
-                                <div dangerouslySetInnerHTML={{__html: postdata.body_html}} />
+                                <div className="w-full md:w-1/2 mx-auto" dangerouslySetInnerHTML={{__html: postdata.body_html}} />
                                 
                          </div>
                                
                     </div>
-                    <div className="flex flex-row  w-full mx-auto">
+                    <div className="flex flex-row md:w-1/2  w-full mx-auto">
                         <div className="mx-6 my-6">
                         <img src={postdata.user.profile_image_90} alt="" className="border-4 border-purple-600 rounded-full"/>
                         </div>
@@ -64,7 +64,7 @@ function ViewPost() {
             
             : "loading"}
 
-            <div className="container mx-auto my-6">
+            <div className="container w-full md:w-1/2 mx-auto my-6">
                 <h3 className="text-3xl font-medium"> Comments</h3>
 
                 {comments ?
