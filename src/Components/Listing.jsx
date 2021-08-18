@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import {listing} from '../Store/Api'
+import Loader from './Loader'
 
 function Listing() {
     const [lists, setLists] = useState([])
@@ -35,7 +36,7 @@ function Listing() {
                         </div>
                     )
                 })
-            : "loading"}
+            : <Loader />}
             
 
         </div>

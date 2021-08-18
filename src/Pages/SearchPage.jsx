@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import {useHistory} from 'react-router-dom'
 import NavBar from '../Components/NavBar'
 import {blogbytag} from '../Store/Api'
+import Loader from '../Components/Loader'
 function SearchPage() {
     const history = useHistory()
     const [blogs, setBlogs] = useState([])
@@ -59,7 +60,7 @@ function SearchPage() {
 
                         )
                     })
-                : ""}
+                : <Loader />}
 
                 
             </div>

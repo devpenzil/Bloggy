@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import {articles, comment} from '../Store/Api'
 import NavBar from '../Components/NavBar'
+import Loader from '../Components/Loader'
 function ViewPost() {
     const [postdata, setPostdata] = useState()
     const [comments, setComments] = useState([])
@@ -62,7 +63,7 @@ function ViewPost() {
                     </div>
                 </div>
             
-            : "loading"}
+            : <Loader />}
 
             <div className="container w-full md:w-1/2 mx-auto my-6">
                 <h3 className="text-3xl font-medium"> Comments</h3>
@@ -80,7 +81,7 @@ function ViewPost() {
                         )
                     })
                 
-                : "loading.."}
+                : <Loader />}
 
             </div>
             

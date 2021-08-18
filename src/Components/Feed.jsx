@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import {articles} from '../Store/Api'
 import {useHistory} from 'react-router-dom'
+import Loader from '../Components/Loader'
 function Feed() {
     const [blogs, setBlogs] = useState([])
     const [pagenum, setPagenum] = useState('1')
@@ -62,7 +63,7 @@ function Feed() {
                     )
                 })
                 
-                : "loading"}
+                : <Loader />}
 
                 
 
