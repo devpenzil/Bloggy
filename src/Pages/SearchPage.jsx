@@ -22,6 +22,11 @@ function SearchPage() {
     useEffect(() => {
         fetchingblogs()
     }, [])
+    const styles = {
+        width:100,
+        height:100,
+        margin:"auto"
+    }
     return (
         <div>
             <NavBar />
@@ -63,6 +68,14 @@ function SearchPage() {
                 : <Loader />}
 
                 
+            </div>
+            <div className="container mx-auto text-3xl font-medium text-center">
+                {blogs.length == 0 ?
+                 <div className="text-center flex flex-col justify-center">
+                     NO DATA FOUND
+                     <lottie-player style={styles} src="https://assets2.lottiefiles.com/packages/lf20_uaqb3mma.json"  background="transparent"  speed="1"   loop  autoplay></lottie-player>
+                 </div> 
+                 : ""}
             </div>
         </div>
     )
