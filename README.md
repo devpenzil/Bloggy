@@ -4,7 +4,7 @@
 
 
 ## Demo
-
+![blog](blog.png)
 
   [go to site](https://blogggy.netlify.app/)
 ## Run Locally
